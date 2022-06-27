@@ -1,10 +1,8 @@
 package com.learn.noteapp.screens
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -14,22 +12,22 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.learn.noteapp.Greeting
 import com.learn.noteapp.R
 import com.learn.noteapp.components.NoteButton
 import com.learn.noteapp.components.NoteInputText
-import com.learn.noteapp.ui.theme.NotesAppJetpackTheme
+import com.learn.noteapp.model.Note
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun NoteScreen(){
+fun NoteScreen(notes:List<Note>,
+               onAddNote: (Note)->Unit,
+               onRemoveNote:(Note)->Unit){
+
+
     var title by remember {
         mutableStateOf("")
     }
@@ -67,7 +65,11 @@ fun NoteScreen(){
                     description=it
                 }
             })
-            NoteButton(modifier = Modifier.padding(8.dp), text = "Save", onClick = {  })
+            NoteButton(modifier = Modifier.padding(8.dp), text = "Save", onClick = {
+                if(title.isNotEmpty() && description.isNotEmpty()){
+                    //save/add to the list
+                }
+            })
         }
 
 
@@ -77,6 +79,6 @@ fun NoteScreen(){
 @Preview(showBackground = true)
 @Composable
 fun NoteScreenPreview(){
-    NoteScreen()
+    NoteScreen(notes= emptyList(), onAddNote = {}, onRemoveNote = {})
 }
 

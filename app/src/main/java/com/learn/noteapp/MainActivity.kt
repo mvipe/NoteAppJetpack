@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                    color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    NoteScreen(notes= emptyList(), onAddNote = {}, onRemoveNote = {})
                 }
             }
         }
