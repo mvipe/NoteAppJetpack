@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.learn.noteapp.screens.NoteScreen
 import com.learn.noteapp.ui.theme.NotesAppJetpackTheme
 
 class MainActivity : ComponentActivity() {
@@ -37,6 +38,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     NotesAppJetpackTheme {
-        Greeting("Android")
+
     }
 }
