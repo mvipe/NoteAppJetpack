@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.learn.noteapp.data.NoteDataSource
 import com.learn.noteapp.screens.NoteScreen
 import com.learn.noteapp.ui.theme.NotesAppJetpackTheme
 
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                    color = MaterialTheme.colors.background
                 ) {
-                    NoteScreen(notes= emptyList(), onAddNote = {}, onRemoveNote = {})
+                    NoteScreen(notes= NoteDataSource().loadNotes(), onAddNote = {}, onRemoveNote = {})
                 }
             }
         }
