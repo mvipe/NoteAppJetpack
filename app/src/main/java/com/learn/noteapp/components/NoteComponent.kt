@@ -73,7 +73,9 @@ fun NoteRow(
     color = Color(0xFFDFE6EB),
     elevation = 6.dp) {
         Column(modifier = Modifier
-            .clickable { }
+            .clickable {
+                onNoteClicked(note)
+            }
             .padding(horizontal = 14.dp, vertical = 6.dp)
         , horizontalAlignment = Alignment.Start) {
             Text(text = note.title,

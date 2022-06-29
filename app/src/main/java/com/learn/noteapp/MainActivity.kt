@@ -8,9 +8,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.learn.noteapp.data.NoteDataSource
+import com.learn.noteapp.model.Note
 import com.learn.noteapp.screens.NoteScreen
 import com.learn.noteapp.ui.theme.NotesAppJetpackTheme
 
@@ -19,11 +23,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NotesAppJetpackTheme {
+
+                val notes= remember {
+                    mutableStateListOf<Note>()
+                }
                 // A surface container using the 'background' color from the theme
                 Surface(
                    color = MaterialTheme.colors.background
                 ) {
-                    NoteScreen(notes= NoteDataSource().loadNotes(), onAddNote = {}, onRemoveNote = {})
+                    NoteScreen(notes= notes, onAddNote = {
+                                       notes.add(it)
+                    }, onRemoveNote = {
+                        notes.remove(it)
+                    })
                 }
             }
         }
