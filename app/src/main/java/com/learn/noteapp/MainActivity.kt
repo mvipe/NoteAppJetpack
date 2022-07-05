@@ -21,7 +21,9 @@ import com.learn.noteapp.model.Note
 import com.learn.noteapp.screens.NoteScreen
 import com.learn.noteapp.screens.NoteViewModel
 import com.learn.noteapp.ui.theme.NotesAppJetpackTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
