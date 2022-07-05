@@ -1,25 +1,28 @@
 package com.learn.noteapp.data
 
+import androidx.compose.runtime.MutableState
 import androidx.room.*
 import com.learn.noteapp.model.Note
+import kotlinx.coroutines.flow.Flow
+
 
 @Dao
 interface NoteDatabaseDao {
     @Query("SELECT * from notes_tbl")
-    fun getNote():List<Note>
+    fun getNote(): Flow<List<Note>>
 
     @Query("SELECT * from notes_tbl where id=:id")
-    fun getNoteById(id:String) :Note
+    suspend fun getNoteById(id:String) :Note
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(note:Note)
+    suspend fun insert(note:Note)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(note: Note)
+    suspend fun update(note: Note)
 
     @Query("DELETE from notes_tbl")
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Delete
-    fun delete(note: Note)
+    suspend fun delete(note: Note)
 }
